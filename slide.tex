@@ -1,0 +1,186 @@
+%%% Xi'an Jiaotong University presentation beamer template
+%%% modified from UU_beamer v2.0 by Kingsiong Si, Institute of Multimedia Knowledge Fusion and Engineering, Xi'an Jiaotong University
+
+\documentclass{beamer}
+\usepackage{ctex}
+
+\usepackage[chinese, provide=*]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{hyperref, % clickable links
+    graphicx, % include images
+    listings, % for code and formatting
+    caption, % customization of captions in figures and tables
+    stackengine, % custom layouts 
+    amsmath, % math env
+    xcolor, % extend color support
+    multicol, % multiple columns layout
+    booktabs, % high quality tables
+}
+
+\usepackage[backend=bibtex, sorting=none]{biblatex}
+\addbibresource{ref.bib}
+
+\usepackage{xjtu_beamer} % customized style
+
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+
+% ------ CODE COLOR DEFINITION ------ %
+
+\definecolor{codered}{rgb}{0.6,0,0}
+\definecolor{codeblue}{rgb}{0,0,0.8}
+\definecolor{codegreen}{rgb}{0,0.5,0}
+\definecolor{almostwhite}{gray}{0.55}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{codeblue},
+    emphstyle=\ttfamily\color{codered},   % Custom highlighting style
+    stringstyle=\color{codepurple},
+    numbers=left,
+    numberstyle=\small\color{almostwhite},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+    commentstyle=\color{codegreen},
+    captionpos=b    
+}
+
+% ------------- PRESENTATION INFO --------------- %
+\newcommand{\fullconference}{Conference Name} % used for conference
+\newcommand{\shortconference}{Conference acronym}
+\newcommand{\contact}
+{\href{mailto:email@stu.xjtu.edu.cn}{\textit{email@stu.xjtu.edu.cn}}}
+
+\author[K. Si, \contact]{\href{}{Kingsiong Si}}
+\institute[IMKFE, XJTU]{\href{}{Institute of Multimedia Knowledge Fusion and Engineering,\\ Xi'an Jiaotong University}
+    \\ \smallskip \contact}
+\title[beamer]{how to make a presentation}
+% \subtitle{subtitle}
+% \date[Month 20XX]{\small \today
+    % \\ \fullconference}
+\date{\today}
+
+\begin{document}
+
+% ------------ TITLE SLIDE --------------- %
+{
+% Remove headline and footline from first slide
+\setbeamertemplate{footline}{} 
+\setbeamertemplate{headline}{} 
+
+\begin{frame}\label{start}
+    \titlepage
+    \begin{figure}
+            \includegraphics[width=.13\textwidth]{style/xjtu_logo.png} 
+    \end{figure}
+\end{frame}
+}
+
+% ---------- TABLE OF CONTENT --------- %
+\begin{frame}{Contents}
+    \tableofcontents[sectionstyle=show, subsectionstyle=show/shaded/hide, subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}{Example of text and equation}
+
+    a beamer template modified from Uppsala University presentation beamer template. 
+
+    this is a foot cite.\footfullcite{vaswani2017attention}
+
+    \begin{itemize}[<+->]
+        \item 1st, we should sleep more...
+        \item 2nd, we should eat more...
+    \end{itemize}
+
+    \begin{block}{Block Title}
+        Block 1
+    \end{block}
+
+    \centering
+    \begin{equation}
+        x = \frac{{-a \pm \sqrt{{b}}}}{{c}}
+        \label{eq:equation1}
+    \end{equation}
+
+    In Equation~\ref{eq:equation1}, we have the \textit{bla bla bla} formula.
+
+\end{frame}
+
+
+\section{Methodology}
+\begin{frame}{Two columns layout}
+    % --------- TWO COLUMNS LAYOUT ------- %
+    \begin{columns}
+
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Item 1
+            \item Item 2 
+            \begin{itemize}
+                \item Subitem 
+            \end{itemize}
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[height=0.5\textwidth]{images/placeholder_image.png}
+            \caption{Image caption}
+            \label{fig:figure1}
+        \end{figure}
+        
+    \end{columns}
+
+    
+\end{frame}
+
+\begin{frame}{Code snippet example}
+    \lstinputlisting[language=Python, label=samplecode, caption=Example of code, % firstline=1, lastline=10
+    ]{code.py}
+
+\end{frame}
+
+
+
+\begin{frame}{Table frame example}
+
+\begin{table}
+    \begin{tabular}{c|cc}
+        \textbf{Col1} & Col2 & Col3 \\
+        \hline
+        1            & ...                    & ...             \\
+        2            & ...                    & ...             \\
+        3            & ...                    & ...             \\
+    \end{tabular}
+    \caption{Table name}
+    \label{tab:table1}
+\end{table}
+
+\end{frame}
+
+% --------- SECTION 3 ------- %
+\section{Conclusion}
+
+\begin{frame}{Results}
+    \begin{figure}
+        \centering
+        \includegraphics[height=5cm]{images/placeholder_image.png}
+        \caption{Image caption}
+        \label{fig:figure2}
+    \end{figure}
+\end{frame}
+
+\section*{Thanks}
+
+\begin{frame}
+    \begin{center}
+        \Huge Thanks!
+    \end{center}
+\end{frame}
+
+\end{document}

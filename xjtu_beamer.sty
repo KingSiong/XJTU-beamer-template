@@ -1,0 +1,112 @@
+\ProvidesClass{xjtu_beamer}[Xi'an Jiaotong University Presentation Template, by KingSing Si]
+
+\RequirePackage{tikz}
+
+\mode<presentation>
+
+\newif\ifbeamer@secheader
+\beamer@secheaderfalse
+\renewcommand\tablename{Table}
+\renewcommand\figurename{Figure}
+\ProcessOptionsBeamer
+
+\useoutertheme[footline=authorinstitutetitle,
+    subsection=false]{smoothbars}
+\makeatletter 
+\newcommand{\frameofframes}{/}
+\newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
+
+% -------------- FOOTLINE ------------ %
+\setbeamertemplate{footline} 
+  {%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+    \end{beamercolorbox}
+
+    % -------- LIGHT FOOTLINE (AUTHOR + AFFILIATION) --------- %
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+      \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
+      \hfill%
+      {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
+    \end{beamercolorbox}%
+
+    % -------- DARK FOOTLINE (TITLE + PAGE NUMBER) --------- %
+    \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+      {\usebeamerfont{title in head/foot}\insertshorttitle}%
+      \hfill%
+      {\usebeamerfont{subtitle in head/foot}\insertshortsubtitle}%
+      \hfill%
+      {\usebeamerfont{frame number}\usebeamercolor[fg]{frame number}\insertpagenumber~\frameofframes~\inserttotalframenumber}
+    \end{beamercolorbox}%
+    
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+    \end{beamercolorbox}
+  }
+\makeatother
+
+\useinnertheme{circles}
+
+\xdefinecolor{uppsalared}{RGB}{151,31,48}
+\xdefinecolor{xjtured}{RGB}{200,22,30} % this color is awful...
+\setbeamercolor{footline}{bg=uppsalared}
+\setbeamercolor{frametitle}{bg=uppsalared,fg=white}
+\setbeamercolor{title}{bg=uppsalared}
+\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{footnote}{size=\tiny}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]
+
+\setbeamercolor{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor{palette quaternary}{fg=white,bg=structure.fg!50!black}
+\setbeamercolor{titlelike}{parent=palette primary}
+
+\setbeamercolor{block title}{bg=uppsalared,fg=white}
+\setbeamercolor*{block title example}{use={normal text,example text},bg=white,fg=uppsalared}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\setbeamercolor{fine separation line}{}
+\setbeamercolor{item projected}{fg=white}
+\setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+\setbeamercolor{section in sidebar}{fg=brown}
+\setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+\setbeamercolor{sidebar}{bg=uppsalared}
+\setbeamercolor{sidebar}{parent=palette primary}
+\setbeamercolor{structure}{fg=uppsalared}
+\setbeamercolor{subsection in sidebar}{fg=brown}
+\setbeamercolor{subsection in sidebar shaded}{fg=grey}
+
+% ------- TAB OF CONTENT FOR SEC AND SUBSEC -------- %
+\AtBeginSection[]{
+	\begin{frame}
+		\tableofcontents[sectionstyle=show/shaded,
+                subsectionstyle=show/shaded/hide,
+                subsubsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+\AtBeginSubsection[]{
+	\begin{frame}
+		\tableofcontents[sectionstyle=show/shaded,
+                subsectionstyle=show/shaded/hide,
+                subsubsectionstyle=show/shaded/hide]
+	\end{frame}
+}
+
+% --------- BACKGROUND UU LOGO B&W ----------- %
+\usebackgroundtemplate{
+    \begin{tikzpicture}[overlay,remember picture]
+        % Background picture
+        \node[at=(current page.north east),anchor=north east,inner sep=0pt,outer sep=0pt] {
+            \includegraphics[keepaspectratio,height=0.5\paperheight]{style/xjtu_logo_bg.png}};
+    \end{tikzpicture}
+}
+
+
+\mode
+<all>
