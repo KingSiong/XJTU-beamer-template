@@ -1,10 +1,11 @@
 %%% Xi'an Jiaotong University presentation beamer template
-%%% modified from UU_beamer v2.0 by Kingsiong Si, Institute of Multimedia Knowledge Fusion and Engineering, Xi'an Jiaotong University
+%%% modified from UU_beamer v2.0 by King-Siong Si, Institute of Multimedia Knowledge Fusion and Engineering, Xi'an Jiaotong University
 
 \documentclass{beamer}
-\usepackage{ctex}
 
-\usepackage[chinese, provide=*]{babel}
+\usepackage{ctex}
+\usepackage[english]{babel} % comment this line and use the next one if you want a chinese style
+% \usepackage[chinese, provide=*]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{hyperref, % clickable links
     graphicx, % include images
@@ -14,16 +15,22 @@
     amsmath, % math env
     xcolor, % extend color support
     multicol, % multiple columns layout
+    multirow, % multiple rows layout
     booktabs, % high quality tables
+    tikz, % tikz for drawing
+    pgfplots, % pgfplots for drawing functions
+    bm
 }
-
-\usepackage[backend=bibtex, sorting=none]{biblatex}
-\addbibresource{ref.bib}
+\usetikzlibrary{calc, shapes.symbols}
 
 \usepackage{xjtu_beamer} % customized style
 
+% ------ COMMANDS ------ %
+
 \def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
 \def\env#1{\texttt{\color{blue}\footnotesize #1}}
+
+\newcommand{\hl}[1]{\textcolor{uppsalared}{#1}} % highlight
 
 % ------ CODE COLOR DEFINITION ------ %
 
@@ -47,28 +54,27 @@
     captionpos=b    
 }
 
-% ------------- PRESENTATION INFO --------------- %
+% ------ PRESENTATION INFO ------ %
 \newcommand{\fullconference}{Conference Name} % used for conference
 \newcommand{\shortconference}{Conference acronym}
 \newcommand{\contact}
-{\href{mailto:email@stu.xjtu.edu.cn}{\textit{email@stu.xjtu.edu.cn}}}
+{\href{mailto:sjsinx@stu.xjtu.edu.cn}{\textit{sjsinx@stu.xjtu.edu.cn}}}
 
-\author[K. Si, \contact]{\href{}{Kingsiong Si}}
+\author[K. Si, \contact]{\href{}{King-Siong Si}}
 \institute[IMKFE, XJTU]{\href{}{Institute of Multimedia Knowledge Fusion and Engineering,\\ Xi'an Jiaotong University}
     \\ \smallskip \contact}
 \title[beamer]{how to make a presentation}
 % \subtitle{subtitle}
-% \date[Month 20XX]{\small \today
-    % \\ \fullconference}
 \date{\today}
 
 \begin{document}
 
-% ------------ TITLE SLIDE --------------- %
+% ------ TITLE SLIDE ------ %
 {
 % Remove headline and footline from first slide
 \setbeamertemplate{footline}{} 
 \setbeamertemplate{headline}{} 
+\setbeamertemplate{navigation symbols}{}
 
 \begin{frame}\label{start}
     \titlepage
@@ -78,21 +84,23 @@
 \end{frame}
 }
 
-% ---------- TABLE OF CONTENT --------- %
-\begin{frame}{Contents}
+% ------ TABLE OF CONTENT ------ %
+\begin{frame}
     \tableofcontents[sectionstyle=show, subsectionstyle=show/shaded/hide, subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
+% ------ MAIN BODY ------ %
 
 \section{Introduction}
 
 \begin{frame}{Example of text and equation}
 
-    a beamer template modified from Uppsala University presentation beamer template. 
+    a beamer template modified from \href{https://www.overleaf.com/latex/templates/uppsala-university-beamer-template-v2-dot-0/sjbwbmzvpbbf}{Uppsala University presentation beamer template}. 
 
-    this is a foot cite.\footfullcite{vaswani2017attention}
+    this is a citation.\cite{vaswani2017attention}
+    this is a piece of \hl{highlighted text}.
 
-    \begin{itemize}[<+->]
+    \begin{itemize}[<+->] % overlay
         \item 1st, we should sleep more...
         \item 2nd, we should eat more...
     \end{itemize}
@@ -114,7 +122,7 @@
 
 \section{Methodology}
 \begin{frame}{Two columns layout}
-    % --------- TWO COLUMNS LAYOUT ------- %
+    % ------ TWO COLUMNS LAYOUT ------ %
     \begin{columns}
 
         \column{0.5\textwidth}
@@ -142,9 +150,62 @@
 \begin{frame}{Code snippet example}
     \lstinputlisting[language=Python, label=samplecode, caption=Example of code, % firstline=1, lastline=10
     ]{code.py}
-
 \end{frame}
 
+\begin{frame}[t]{TikZ overlay example} % awful example since i'm rubbish
+    \begin{itemize}[<+->]
+        \item \textit{RepVGG: Making VGG-style ConvNets Great Again}\cite{ding2021repvgg}
+    \end{itemize}
+    \uncover<2->{
+        \begin{figure}
+            \centering
+            \resizebox{.6\textwidth}{!}{
+                \begin{tikzpicture}
+                    % \draw [help lines] (0, 0) grid (10, 10);
+                    \draw [thick, fill=teal!40] (0, 5) rectangle (2, 6);
+                    \uncover<2-3>{
+                    \draw [thick, fill=orange!80] (3, 5) rectangle (5, 6);}
+                    \uncover<2>{
+                    \draw [thick, fill=yellow!40] (6, 5) rectangle (8, 5.3);}
+                    
+                    \draw [thick] (1, 8) -- (1, 6);
+                    \uncover<2-3>{
+                    \draw [thick] (1, 7.5) to [out=0, in=90] (4, 6);
+                    \draw [thick, out=0, in=90] (1, 7.5) to (7, 5.3);}
+                    
+                    \uncover<2-3>{
+                    \node (add) [circle, minimum size=1, thick, draw=black] at (1, 3) {\textbf{$+$}};}
+                    \uncover<2-3>{
+                    \draw [thick] (1, 5) -- (add);}
+                    \uncover<2-3>{
+                    \draw [thick, out=270, in=10] (4, 5) to (add);
+                    \draw [thick, out=270, in=0] (7, 5) to (add);}
+                
+                    \uncover<2>{
+                    \draw [thick, fill=teal!10] (0, 4) rectangle (2, 4.3);
+                    \draw [thick, fill=orange!40] (3, 4) rectangle (5, 4.3);}
+                    \uncover<2-3>{
+                    \draw [thick, ->] (add) -- (1, 2.2);}
+                    \uncover<4>{
+                        \draw [thick, ->] (1, 5) -- (1, 2.2);
+                    }
+                
+                    \node (dot1) at (1, 5.5) {$3\times 3$};
+                    \uncover<2>{
+                    \node (dot2) at (4, 5.5) {$1\times 1$};}
+    
+                    \uncover<3>{
+                    \draw [thick, fill=yellow!40] (6, 5) rectangle (8, 6);}
+    
+                    \uncover<3>{
+                    \node (dot2) at (4, 5.5) {$3\times 3$};
+                    \node (dot3) at (7, 5.5) {$3\times 3$};}
+                
+                \end{tikzpicture}
+            }
+        \end{figure}
+    }
+\end{frame}
 
 
 \begin{frame}{Table frame example}
@@ -163,10 +224,12 @@
 
 \end{frame}
 
-% --------- SECTION 3 ------- %
 \section{Conclusion}
 
-\begin{frame}{Results}
+\begin{frame}{Conclusion}
+    \begin{itemize}
+        \item sleep is all we need.
+    \end{itemize}
     \begin{figure}
         \centering
         \includegraphics[height=5cm]{images/placeholder_image.png}
@@ -175,9 +238,18 @@
     \end{figure}
 \end{frame}
 
+% ------ References ------ %
+
+\section{References}
+
+\begin{frame}[allowframebreaks] % auto break frames
+    \bibliography{ref}
+    \tiny\bibliographystyle{plain}
+\end{frame}
+
 \begin{frame}
     \begin{center}
-        \Huge Thanks!
+        \Huge \textsc{Thanks!}
     \end{center}
 \end{frame}
 

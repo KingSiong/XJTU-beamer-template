@@ -1,4 +1,4 @@
-\ProvidesClass{xjtu_beamer}[Xi'an Jiaotong University Presentation Template, by KingSing Si]
+\ProvidesClass{xjtu_beamer}[Xi'an Jiaotong University Presentation Template, by King\-Siong Si]
 
 \RequirePackage{tikz}
 
@@ -16,13 +16,13 @@
 \newcommand{\frameofframes}{/}
 \newcommand{\setframeofframes}[1]{\renewcommand{\frameofframes}{#1}}
 
-% -------------- FOOTLINE ------------ %
+% ------ FOOTLINE ------ %
 \setbeamertemplate{footline} 
   {%
     \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
     \end{beamercolorbox}
 
-    % -------- LIGHT FOOTLINE (AUTHOR + AFFILIATION) --------- %
+    % ------ LIGHT FOOTLINE (AUTHOR + AFFILIATION) ------ %
     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
       leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
       \leavevmode{\usebeamerfont{author in head/foot}\insertshortauthor}%
@@ -30,7 +30,7 @@
       {\usebeamerfont{institute in head/foot}\usebeamercolor[fg]{institute in head/foot}\insertshortinstitute}%
     \end{beamercolorbox}%
 
-    % -------- DARK FOOTLINE (TITLE + PAGE NUMBER) --------- %
+    % ------ DARK FOOTLINE (TITLE + PAGE NUMBER) ------ %
     \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
       leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
       {\usebeamerfont{title in head/foot}\insertshorttitle}%
@@ -82,7 +82,7 @@
 \setbeamercolor{subsection in sidebar}{fg=brown}
 \setbeamercolor{subsection in sidebar shaded}{fg=grey}
 
-% ------- TAB OF CONTENT FOR SEC AND SUBSEC -------- %
+% ------ TAB OF CONTENT FOR SEC AND SUBSEC ------ %
 \AtBeginSection[]{
 	\begin{frame}
 		\tableofcontents[sectionstyle=show/shaded,
@@ -98,7 +98,7 @@
 	\end{frame}
 }
 
-% --------- BACKGROUND UU LOGO B&W ----------- %
+% ------ BACKGROUND UU LOGO B&W ------ %
 \usebackgroundtemplate{
     \begin{tikzpicture}[overlay,remember picture]
         % Background picture
