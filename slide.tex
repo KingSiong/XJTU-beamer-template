@@ -31,6 +31,13 @@
 \def\env#1{\texttt{\color{blue}\footnotesize #1}}
 
 \newcommand{\hl}[1]{\textcolor{uppsalared}{#1}} % highlight
+%%% to avoid footnote rule from showing too early when using overalys. 
+%%% ugly, but it works. 
+%%% this method comes from https://tex.stackexchange.com/questions/518750/beamer-how-to-make-footnote-rule-appear-later-pause.
+\newcommand{\onlyfootnoterule}[1]{\let\oldfootnoterule\footnoterule
+\def\footnoterule{\only<#1>{\oldfootnoterule}}}
+\newcommand{\uncoverfootnoterule}[1]{\let\oldfootnoterule\footnoterule
+\def\footnoterule{\uncover<#1>{\oldfootnoterule}}}
 
 % ------ CODE COLOR DEFINITION ------ %
 
@@ -93,16 +100,18 @@
 
 \section{Introduction}
 
+{
+\uncoverfootnoterule{2-} % control the showing time of footnote rule
 \begin{frame}{Example of text and equation}
 
-    a beamer template modified from \href{https://www.overleaf.com/latex/templates/uppsala-university-beamer-template-v2-dot-0/sjbwbmzvpbbf}{Uppsala University presentation beamer template}. 
+    a beamer template modified from \href{https://www.overleaf.com/latex/templates/uppsala-university-beamer-template-v2-dot-0/sjbwbmzvpbbf}{Uppsala University presentation beamer template}.
 
     this is a citation.\cite{vaswani2017attention}
     this is a piece of \hl{highlighted text}.
 
     \begin{itemize}[<+->] % overlay
         \item 1st, we should sleep more...
-        \item 2nd, we should eat more...
+        \item 2nd, we should eat more...\footnote<2->{this is a footnote.}
     \end{itemize}
 
     \begin{block}{Block Title}
@@ -118,7 +127,7 @@
     In Equation~\ref{eq:equation1}, we have the \textit{bla bla bla} formula.
 
 \end{frame}
-
+}
 
 \section{Methodology}
 \begin{frame}{Two columns layout}
