@@ -258,15 +258,23 @@
 
 \section*{Thanks}
 
-\begin{frame}
-    % \begin{center}
-    %     \Huge \textsc{Thanks!}
-    % \end{center}
+{
+% use Le-Su motto in the last slide
+\usebackgroundtemplate{
     \begin{tikzpicture}[overlay,remember picture]
         % Background picture
+        \node[at=(current page.center),anchor=center, inner sep=0pt,outer sep=0pt, fill opacity=.3] {
+            \includegraphics[keepaspectratio,height=.8\paperheight]{style/xjtu_motto_origin.png}};
+    \end{tikzpicture}
+}
+    
+\begin{frame}
+    \begin{tikzpicture}[overlay,remember picture]
+        % make it in center position
         \node[at=(current page.center),anchor=center,inner sep=0pt,outer sep=0pt] 
         {\Huge \textsc{Thanks!}};
     \end{tikzpicture}
 \end{frame}
+}
 
 \end{document}
