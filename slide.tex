@@ -23,6 +23,16 @@
 }
 \usetikzlibrary{calc, shapes.symbols}
 
+% ------ FONT STYLES ------ %
+
+\setCJKfamilyfont{oyx-tc}{AuIongSun-TC.TTC}[Path=./fonts/]
+\setCJKfamilyfont{oyx-sc}{AuIongSun-SC.otf}[Path=./fonts/]
+\newcommand{\oyxtc}{\CJKfamily{oyx-tc}}
+\newcommand{\oyxsc}{\CJKfamily{oyx-sc}}
+
+\setCJKsansfont[Path=./fonts/]{AuIongSun-TC.TTC} % traditional chinese
+% \setCJKsansfont[Path=./fonts/]{AuIongSun-SC.otf} % simplified chinese
+
 \usepackage{xjtu_beamer} % customized style
 
 % ------ COMMANDS ------ %
@@ -232,6 +242,45 @@
 \end{table}
 
 \end{frame}
+
+\begin{frame}{中文正體測試}
+    \begin{itemize}
+        \item 此字體為歐體風格，源於著名碑帖《九成宮醴泉銘》。
+        \item 大決所犯，傷人必多，吾不克救也。---《春秋左傳》
+        \item 帝高陽之苗裔兮，朕皇考曰伯庸。---《離騷經》
+        \item 溥天之下，莫非王土；率土之濱，莫非王臣。---《詩經》
+        \item 歸去來兮，請息交以絕遊。---《歸去來辭並序》
+        \item 後之視今，亦由今之視昔。---《蘭亭集序》
+        \item 天地玄黃，宇宙洪荒。---《千字文》
+        \item 欲買桂花同載酒，終不似，少年遊。---《唐多令》
+        \item 昨夜西風凋碧樹，獨上高樓，望盡天涯路。---《蝶戀花》
+        \item 衣帶漸寬終不悔，為伊消得人憔悴。---《鳳棲梧》
+        \item 暮然回首，那人卻在燈火闌珊處。---《青玉案》
+        \item 精勤求學，敦篤勵志，果毅力行，忠恕任事。\\---西安交通大學校訓
+        \item 嚴、正、勤、實。---養正中學校訓
+    \end{itemize}
+\end{frame}
+
+{
+    \oyxsc
+    \begin{frame}{\oyxsc 中文简体测试}
+        \begin{itemize}
+            \item 此字体为欧体风格，源于著名碑帖《九成宫醴泉铭》。
+            \item 大决所犯，伤人必多，吾不克救也。---《春秋左传》
+            \item 帝高阳之苗裔兮，朕皇考曰伯庸。---《离骚经》
+            \item 溥天之下，莫非王土；率土之滨，莫非王臣。---《诗经》
+            \item 归去来兮，请息交以绝游。---《归去来辞并序》
+            \item 后之视今，亦由今之视昔。---《兰亭集序》
+            \item 天地玄黄，宇宙洪荒。---《千字文》
+            \item 欲买桂花同载酒，终不似，少年游。---《唐多令》
+            \item 昨夜西风凋碧树，独上高楼，望尽天涯路。---《蝶恋花》
+            \item 衣带渐宽终不悔，为伊消得人憔悴。---《凤栖梧》
+            \item 暮然回首，那人却在灯火阑珊处。---《青玉案》
+            \item 精勤求学，敦笃励志，果毅力行，忠恕任事。\\---西安交通大学校训
+            \item 严、正、勤、实。---养正中学校训
+        \end{itemize}
+    \end{frame}
+}
 
 \section{Conclusion}
 
