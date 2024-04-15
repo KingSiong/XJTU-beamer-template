@@ -19,7 +19,9 @@
     booktabs, % high quality tables
     tikz, % tikz for drawing
     pgfplots, % pgfplots for drawing functions
-    bm
+    bm, 
+    amssymb, 
+    pifont, 
 }
 \usetikzlibrary{calc, shapes.symbols}
 
@@ -48,6 +50,12 @@
 \def\footnoterule{\only<#1>{\oldfootnoterule}}}
 \newcommand{\uncoverfootnoterule}[1]{\let\oldfootnoterule\footnoterule
 \def\footnoterule{\uncover<#1>{\oldfootnoterule}}}
+
+%%% todo list
+%%% this method comes from https://tex.stackexchange.com/questions/247681/how-to-create-checkbox-todo-list
+\newcommand{\done}{\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\tiny \ding{52}}}$\square$}
+\newcommand{\wontfix}{\rlap{\raisebox{0.3ex}{\hspace{0.4ex}\scriptsize \ding{56}}}$\square$}
+\newcommand{\wait}{$\square$}
 
 % ------ CODE COLOR DEFINITION ------ %
 
