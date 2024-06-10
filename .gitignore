@@ -1,0 +1,14 @@
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.nav
+*.pdf
+*.xml
+*.snm
+*.synctex.gz
+*.toc
+slide-blx.bib
+
+.DS_Store
