@@ -1,6 +1,6 @@
 # XJTU-beamer-template
 
-this is a beamer template used for presentation for students in xjtu. preview [here](http://www.kingsiong.top/wp-content/uploads/2024/06/slide.pdf).
+this is a beamer template used for presentation for students in xjtu. preview [here](http://www.kingsiong.top/document/slide.pdf).
 
 this is modified from [Uppsala University Beamer Template v2.0](https://www.overleaf.com/latex/templates/uppsala-university-beamer-template-v2-dot-0/sjbwbmzvpbbf). 
 
